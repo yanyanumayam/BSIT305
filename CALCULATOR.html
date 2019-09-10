@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>Calculator</title>
+    </head>
+    
+    <body>
+        <style>
+            .numpad {
+                width: 100px;
+                height: 100px;
+                font-size: 32px;
+            }
+            .panel {
+                margin-left: 40%;
+                margin-top: 15px;
+                width: 500px;
+            }
+            #screen {
+                font-size: 32px;
+            }
+        </style>
+        <script> 
+            var opearator = ''
+            var num1, num2
+            var number = 0
+            function buttonPress(n) {
+                number = document.getElementById("screen").value;
+                number = number + n;
+                document.getElementById("screen").value = number;
+            }
+            function setOperator(op) {
+                num1 = number;
+                operator = op;
+                document.getElementById("screen").value = ""
+            }
+            function evaluateExpression() {
+                num2 = number
+                var answer = 0
+                switch(operator) {
+                    case '*': 
+                    answer = Number(num1) * Number(num2)
+                    break;
+                       
+                    case '/': 
+                    answer = Number(num1) / Number(num2)
+                    break;
+                    case '+':       
+                        answer = Number(num1) + Number(num2)
+                    break;
+                    case '-': 
+                    answer = Number(num1) - Number(num2)
+                    break;
+                }
+                
+                document.getElementById("screen").value = answer;
+            }
+        </script>
+        <div class="panel">
+                <input type="text" id="screen"><br>
+                <button class="numpad" style="width: 100px" onclick="buttonPress(1)">1</button>
+                <button class="numpad" onclick="buttonPress(2)">2</button>
+                <button class="numpad" onclick="buttonPress(3)">3</button><br>
+                <button class="numpad" onclick="buttonPress(4)">4</button>
+                <button class="numpad" onclick="buttonPress(5)">5</button>
+                <button class="numpad" onclick="buttonPress(6)">6</button><br>
+                <button class="numpad" onclick="buttonPress(7)">7</button>
+                <button class="numpad" onclick="buttonPress(8)">8</button>
+                <button class="numpad" onclick="buttonPress(9)">9</button><br>
+                <button class="numpad" onclick="evaluateExpression()">=</button>
+                <button class="numpad" onclick="setOperator('+')">+</button>
+                <button class="numpad" onclick="setOperator('-')">-</button><br>    
+                <button class="numpad" onclick="setOperator('/')">/</button>
+                <button class="numpad" onclick="setOperator('*')">*</button>
+        </div>
+
+    </body>
+</html>
